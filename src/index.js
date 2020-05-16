@@ -26,8 +26,6 @@ function init() {
         m => scene.add(m), m => scene.remove(m)
     )
 
-    console.log(cubeField.cubes)
-
     light = new THREE.PointLight( 0xFFFFFF, 0.75, 3000 );
     light.position.set( 0, 1000, 300 );
     scene.add( light );
