@@ -44,10 +44,6 @@ export default class CubeField {
                 cubesAdded++
             }
         } 
-
-        if (cubesAdded > 0) {
-            console.log('added cubes ' + cubesAdded)
-        }
     }
 
     step(newPosition, removeFromScene) {
@@ -58,10 +54,7 @@ export default class CubeField {
                 this._removeMesh(this.cubes[index].mesh)
                 index++
             }
-            if (index > 0) {
-                console.log('removing ' + index)
-                this._cubes.splice(0, index)
-            }
+            this._cubes.splice(0, index)
         } catch (ex) {
             debugger
         }
