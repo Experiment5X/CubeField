@@ -28,8 +28,8 @@ function init() {
 
     console.log(cubeField.cubes)
 
-    light = new THREE.PointLight( 0xFFFFFF, 1.5, 1000 );
-    light.position.set( 0, 300, 300 );
+    light = new THREE.PointLight( 0xFFFFFF, 0.75, 3000 );
+    light.position.set( 0, 1000, 300 );
     scene.add( light );
 
     const ambientLight = new THREE.AmbientLight( 0xaaaaaa ); 
