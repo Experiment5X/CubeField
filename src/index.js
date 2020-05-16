@@ -7,13 +7,14 @@ import CubeField from './cube-field';
 let camera, scene, renderer;
 let mesh;
 let cubeField;
+let light;
 
 init();
 animate();
 
 function init() {
 
-    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
+    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 5000 );
     camera.position.z = 400;
 
     scene = new THREE.Scene();
@@ -21,12 +22,13 @@ function init() {
     /*const cube = new Cube(200, { x: 0, y: 0, z: 0 });
     mesh = cube.mesh
     scene.add( mesh );*/
-    cubeField = new CubeField({ x: 0, y: 0, z: 0 }, 1000, 1000)
-    cubeField.cubes.forEach(c => scene.add(c.mesh))
+    cubeField = new CubeField({ x: 0, y: 0, z: 0 }, 2000, 3000,
+        m => scene.add(m), m => scene.remove(m)
+    )
 
     console.log(cubeField.cubes)
 
-    const light = new THREE.PointLight( 0xFFFFFF, 1.5, 1000 );
+    light = new THREE.PointLight( 0xFFFFFF, 1.5, 1000 );
     light.position.set( 0, 300, 300 );
     scene.add( light );
 
@@ -57,6 +59,13 @@ let lastAnimateTime = undefined
 function animate() {
 
     requestAnimationFrame( animate );
+
+    camera.position.set(camera.position.x, camera.position.y, camera.position.z - 5)
+    light.position.set(camera.position.x, camera.position.y, camera.position.z - 5)
+    cubeField.step(
+        { x: camera.position.x, y: camera.position.y, z: camera.position.z - 5 },
+        c => scene.remove(c.mesh)
+    )
 
     renderer.render( scene, camera );
 
