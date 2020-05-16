@@ -22,7 +22,7 @@ function init() {
     /*const cube = new Cube(200, { x: 0, y: 0, z: 0 });
     mesh = cube.mesh
     scene.add( mesh );*/
-    cubeField = new CubeField({ x: 0, y: 0, z: 0 }, 2000, 3000,
+    cubeField = new CubeField({ x: 0, y: 0, z: 0 }, 3300, 3000,
         m => scene.add(m), m => scene.remove(m)
     )
 

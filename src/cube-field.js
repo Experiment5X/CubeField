@@ -65,9 +65,8 @@ export default class CubeField {
         } catch (ex) {
             debugger
         }
-        console.log('stepping, now this many cubes: ' + this.cubes.length)
-        // console.log('first cube z: ' + this.cubes[0].position.z + ' newPosition.z: ' + newPosition.z)
 
+        // add any cubes onto the end that will be "coming into view"
         const newEndZ = newPosition.z - this._depth
         if (this.cubes.length > 0 && newEndZ < this.cubes[this.cubes.length - 1].position.z) {
             const genStartZ = this.cubes[this.cubes.length - 1].position.z - Cube.size
@@ -75,6 +74,18 @@ export default class CubeField {
 
             this._generateCubes(genStartZ, genEndZ)
         }
+
+        // animate all of the cubes y positions
+        this.cubes.forEach(c => {
+            const zDiff = Math.abs(c.position.z - newPosition.z)
+            const newYPosition = zDiff * zDiff / 10000 - 300
+            c.position.y = newYPosition
+            c.mesh.position.set(
+                c.position.x,
+                c.position.y,
+                c.position.z
+            )
+        })
 
         this._position = newPosition
     }
