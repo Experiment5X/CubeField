@@ -1,0 +1,23 @@
+{
+  "name": "CubeField",
+  "version": "1.0.0",
+  "description": "Cool app",
+  "main": "index.js",
+  "author": "Adam Spindler",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^3.5.3",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "build": "webpack --mode=production",
+    "build-dev": "webpack --mode=development",
+    "start": "webpack-dev-server --open"
+  },
+  "dependencies": {
+    "three": "^0.116.1"
+  }
+}
