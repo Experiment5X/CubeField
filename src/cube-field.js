@@ -15,19 +15,23 @@ export default class CubeField {
     }
 
     _generateInitial() {
-        const y = -1.5 * Cube.size
+        const y = -1.5 * Cube.baseHeight
 
         const startingX = this._position.x - this._breadth
         const endingX = this._position.x + this._breadth
         const startingZ = this._position.z
-        const endingZ = this._position.z - 500
+        const endingZ = this._position.z - 2000
 
-        const heightRange = Cube.size
+        const colors = [ 0xF2626B, 0xFEBA4F, 0xFFEA7F, 0x89E077, 0x83C3FF, 0xC381FD ]
+
+        const heightRange = Cube.baseHeight
 
         for (let z = startingZ; z > endingZ; z -= Cube.size) {
             for (let x = startingX; x < endingX; x += Cube.size) {
                 const height = Cube.size + Math.round(Math.random() * heightRange)
-                const cube = new Cube(height, { x, y, z })
+                const color = colors[Math.round(Math.random() * colors.length)]
+
+                const cube = new Cube(height, { x, y, z }, color)
 
                 this._cubes.push(cube)
             }

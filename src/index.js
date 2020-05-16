@@ -30,7 +30,7 @@ function init() {
     light.position.set( 0, 300, 300 );
     scene.add( light );
 
-    const ambientLight = new THREE.AmbientLight( 0x219ced ); 
+    const ambientLight = new THREE.AmbientLight( 0xaaaaaa ); 
     scene.add(ambientLight)
 
     renderer = new THREE.WebGLRenderer( { antialias: true } );

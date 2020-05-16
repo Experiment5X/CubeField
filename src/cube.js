@@ -16,6 +16,7 @@ class Cube {
     }
 }
 
-Cube.size = 200
+Cube.size = 100
+Cube.baseHeight = 200
 
 export default Cube
